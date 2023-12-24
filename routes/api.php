@@ -17,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get("/repositories", [RepositoryController::class, 'index']);
+Route::post("/repositories/store", [RepositoryController::class, 'store']);
+Route::post("/repositories/update", [RepositoryController::class, 'update']);
+Route::post("/repositories/destroy", [RepositoryController::class, 'destroy']);

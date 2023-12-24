@@ -39,3 +39,5 @@ Route::get('/products', function () {
     $products = App\Models\Product::all();
     return view('products.index', ['products' => $products]);
 });
+Route::resource('user', UserController::class)->middleware(['auth', 'can:isAdmin']);
+Route::repository('repository', RepositoryController::class)->middleware('auth');

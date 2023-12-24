@@ -32,6 +32,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
             <!-- Left navbar links -->
+            @Auth
+            <ul class="navbar-nav me-auto">
+                @if (Auth::user()->role_id = 1)
+                <li class="nav-item">
+                    <a href="{{ route('user.index') }}" class="nav-link">Data User</a>
+                </li> 
+                @endif
+                    <li class="nav-item">
+                        <a href="{{ route('repository.index') }}" class="nav-link">Repository</a>
+                    </li> 
+                </ul>
+            @endAuth
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
@@ -140,8 +152,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
           "autoWidth": false,
           "responsive": true,
         });
+        <script>
+            $(document).ready(function(){
+                $('table').DataTable
+            })
       });
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
 
 </html>

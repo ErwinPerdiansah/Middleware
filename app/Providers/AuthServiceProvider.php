@@ -21,6 +21,10 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Gate::define('isAdmin', function (User $user){
+            return $user->role_id = 1 
+            ? Response::allow()
+            : Response::deny("You are not an admin");
+        });
     }
 }
